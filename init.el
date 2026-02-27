@@ -3,7 +3,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 
-
 (setq package-archives
       '(
         ;;("gnu" . "https://elpa.gnu.org/packages/")
@@ -30,60 +29,36 @@
 ;; stop creating those #auto-save# files
 (setq auto-save-default nil)
 
-(use-package evil
-  :init
-  (evil-mode 1))
-(use-package evil-escape
+(require 'init-basic)
+(require 'init-ui)
+(require 'init-evil)
+(require 'init-pyim)
+(require 'init-avy)
+(require 'init-completion)
+
+(require 'init-magit)
+
+
+
+
+(use-package desktop
   :ensure t
-  :init
-  (evil-escape-mode))
-
-(use-package vertico
-  :ensure t
-  :init
-  (vertico-mode t))
-
-(use-package corfu
-  :ensure t
-  :init
-  (progn
-    (setq corfu-auto t)
-    (setq corfu-cycle t)
-    (setq corfu-quit-at-boundary t)
-    (setq corfu-quit-no-match t)
-    (setq corfu-preview-current nil)
-    (setq corfu-min-width 80)
-    (setq corfu-max-width 100)
-    (setq corfu-auto-delay 0.2)
-    (setq corfu-auto-prefix 1)
-    (setq corfu-on-exact-match nil)
-    (global-corfu-mode)
-    ))
-
-(use-package orderless
-  :ensure t
-  :init
-  (setq completion-styles '(orderless)))
-
-(use-package consult
-  :ensure t)
-
-
-(use-package embark
-  :ensure t
-  :init
   :config
-  (global-set-key (kbd "C-;") 'embark-act)
+  ;; 启用桌面保存模式
+  (desktop-save-mode 1)
+
+  ;; 设置桌面文件路径
+  (setq desktop-path '("~/.emacs.d/desktops/"))
+  (setq desktop-dirname "~/.emacs.d/desktops/")
+  (setq desktop-base-file-name "emacs-desktop")
+  
+  ;; 自动保存设置
+  (setq desktop-auto-save-timeout 30)  ; 30秒无操作自动保存
+  (setq desktop-save t)                ; 退出时自动保存
+  (setq desktop-load-locked-desktop t) ; 允许加载被锁定的桌面
   )
 
-(use-package embark-consult
-  :ensure t
-  )
 
-(use-package marginalia
-  :ensure t
-  :init
-  (marginalia-mode 1))
 
 (use-package restart-emacs
   :ensure t)
@@ -98,70 +73,19 @@
   :init
   (keycast-mode-line-mode t))
 
-(use-package evil
-  :init
-  (evil-mode 1))
-(use-package evil-escape
-  :ensure t
-  :init
-  (evil-escape-mode))
-
-(use-package vertico
-  :ensure t
-  :init
-  (vertico-mode t))
-
-(use-package corfu
-  :ensure t
-  :init
-  (progn
-    (setq corfu-auto t)
-    (setq corfu-cycle t)
-    (setq corfu-quit-at-boundary t)
-    (setq corfu-quit-no-match t)
-    (setq corfu-preview-current nil)
-    (setq corfu-min-width 80)
-    (setq corfu-max-width 100)
-    (setq corfu-auto-delay 0.2)
-    (setq corfu-auto-prefix 1)
-    (setq corfu-on-exact-match nil)
-    (global-corfu-mode)
-    ))
-
-(use-package orderless
-  :ensure t
-  :init
-  (setq completion-styles '(orderless)))
-
-(use-package consult
-  :ensure t)
-
-
-(use-package embark
-  :ensure t
-  :init
-  :config
-  (global-set-key (kbd "C-;") 'embark-act)
-  )
-
-(use-package embark-consult
-  :ensure t
-  )
-
-(use-package marginalia
-  :ensure t
-  :init
-  (marginalia-mode 1))
-
-(use-package restart-emacs
-  :ensure t)
-
-(use-package which-key
-  :ensure t
-  :init
-  (which-key-mode))
-
-(use-package keycast
-  :ensure t
-  :init
-  (keycast-mode-line-mode t))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(avy corfu embark-consult evil-anzu evil-escape evil-matchit
+	 evil-nerd-commenter evil-surround keycast magit marginalia
+	 orderless posframe pyim pyim-basedict restart-emacs vertico
+	 winum)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
