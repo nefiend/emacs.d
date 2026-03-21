@@ -1,91 +1,82 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;在文件最开头添加地个;;在文件最开头添加地个 文件作用域的变量设置，设置变量的绑定方式
+;; -*- lexical-binding: t -*-
+;;; code:
+
+;; {{ 使用 benchmark-init 进行启动时间分析
+<<<<<<< ours
+;; (use-package benchmark-init
+;;   :ensure t
+;;   :init
+;;   (benchmark-init/activate)
+;;   :config
+;;   ;; To disable collection of benchmark data after init is done.
+;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
+;; ;; 调用函数 benchmark-init/show-durations-tree 和 benchmark-init/show-durations-tabulated 以树或表格方式显示结果
+;; ;; }}
+=======
+(use-package benchmark-init
+  :ensure t
+  :init
+  (benchmark-init/activate)
+  :config
+  ;; To disable collection of benchmark data after init is done.
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+;; 调用函数 benchmark-init/show-durations-tree 和 benchmark-init/show-durations-tabulated 以树或表格方式显示结果
+;; }}
+>>>>>>> theirs
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-
-(setq package-archives
-      '(
-        ;;("gnu" . "https://elpa.gnu.org/packages/")
-        ;;("melpa" . "https://melpa.org/packages/")
-        ;;("melpa-stable" . "https://stable.melpa.org/packages/")
-
-        ;; Use either 163 or tsinghua mirror repository when official melpa
-        ;; is slow or shutdown.
-
-        ;; ;; {{ Option 1: 163 mirror repository:
-        ;; ("gnu" . "https://mirrors.163.com/elpa/gnu/")
-        ;; ("melpa" . "https://mirrors.163.com/elpa/melpa/")
-        ;; ("melpa-stable" . "https://mirrors.163.com/elpa/stable-melpa/")
-        ;; ;; }}
-
-        ;; ;; {{ Option 2: tsinghua mirror repository
-        ;; ;; @see https://mirror.tuna.tsinghua.edu.cn/help/elpa/ on usage:
-        ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-        ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-        ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
-        ;; }}
-        ))
-
-;; stop creating those #auto-save# files
-(setq auto-save-default nil)
+(require 'init-packages)
 
 (require 'init-basic)
-(require 'init-ui)
+
 (require 'init-evil)
-(require 'init-pyim)
-(require 'init-avy)
+
+(require 'init-ui)
+
+(require 'init-tab)
+
+(require 'init-funcs)
+<<<<<<< ours
+
+(require 'init-keybindings)
+
+(require 'init-keyfreq)
+
+;;(require 'init-company)
+
 (require 'init-completion)
 
-(require 'init-magit)
+=======
 
+(require 'init-keybindings)
 
+(require 'init-keyfreq)
 
+;;(require 'init-company)
 
-(use-package desktop
-  :ensure t
-  :config
-  ;; 启用桌面保存模式
-  (desktop-save-mode 1)
+(require 'init-completion)
 
-  ;; 设置桌面文件路径
-  (setq desktop-path '("~/.emacs.d/desktops/"))
-  (setq desktop-dirname "~/.emacs.d/desktops/")
-  (setq desktop-base-file-name "emacs-desktop")
-  
-  ;; 自动保存设置
-  (setq desktop-auto-save-timeout 30)  ; 30秒无操作自动保存
-  (setq desktop-save t)                ; 退出时自动保存
-  (setq desktop-load-locked-desktop t) ; 允许加载被锁定的桌面
-  )
+>>>>>>> theirs
+(require 'init-windows)
 
+(require 'init-treemacs)
 
+;;(require 'init-ivy)
 
-(use-package restart-emacs
-  :ensure t)
+(require 'init-avy)
 
-(use-package which-key
-  :ensure t
-  :init
-  (which-key-mode))
+(require 'init-tools)
+(require 'init-movetext)
+(require 'init-translate)
 
-(use-package keycast
-  :ensure t
-  :init
-  (keycast-mode-line-mode t))
+(require 'init-programming)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(avy corfu embark-consult evil-anzu evil-escape evil-matchit
-	 evil-nerd-commenter evil-surround keycast magit marginalia
-	 orderless posframe pyim pyim-basedict restart-emacs vertico
-	 winum)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(require 'init-git)
+
+(require 'init-org)
+
+(require 'init-md)
+
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
