@@ -3,17 +3,6 @@
 ;;; code:
 
 ;; {{ 使用 benchmark-init 进行启动时间分析
-<<<<<<< ours
-;; (use-package benchmark-init
-;;   :ensure t
-;;   :init
-;;   (benchmark-init/activate)
-;;   :config
-;;   ;; To disable collection of benchmark data after init is done.
-;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
-;; ;; 调用函数 benchmark-init/show-durations-tree 和 benchmark-init/show-durations-tabulated 以树或表格方式显示结果
-;; ;; }}
-=======
 (use-package benchmark-init
   :ensure t
   :init
@@ -23,7 +12,6 @@
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 ;; 调用函数 benchmark-init/show-durations-tree 和 benchmark-init/show-durations-tabulated 以树或表格方式显示结果
 ;; }}
->>>>>>> theirs
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
@@ -38,7 +26,6 @@
 (require 'init-tab)
 
 (require 'init-funcs)
-<<<<<<< ours
 
 (require 'init-keybindings)
 
@@ -48,17 +35,6 @@
 
 (require 'init-completion)
 
-=======
-
-(require 'init-keybindings)
-
-(require 'init-keyfreq)
-
-;;(require 'init-company)
-
-(require 'init-completion)
-
->>>>>>> theirs
 (require 'init-windows)
 
 (require 'init-treemacs)

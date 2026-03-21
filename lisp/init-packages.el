@@ -1,8 +1,3 @@
-<<<<<<< ours
-(require 'package)
-
-(provide 'init-packages)
-=======
 (require 'package)
 ;;(setq package-archives '(("gnu"   . "http://elpa.zilongshanren.com/gnu/")
 ;;			 ("melpa" . "http://elpa.zilongshanren.com/melpa/")))
@@ -41,4 +36,3 @@
 
 
 (provide 'init-packages)
->>>>>>> theirs
