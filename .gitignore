@@ -1,0 +1,11 @@
+/.cache
+/.emacs.desktop.lock
+/cnfonts/
+/eln-cache/
+/elpa/
+/history
+/pyim/
+/places
+/recentf
+/auto-save-list/
+/.emacs.desktop
